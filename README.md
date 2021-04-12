@@ -23,11 +23,16 @@
 * 경매 및 1:1채팅 : 고재원 최승원
 * 물건분류 및 추천시스템 : 장동재 전예원
 
-### 4. Meeting logs (using Google Meet)
+### 4. Meeting logs (using Google Meet) & Project schedule
 
-* [x]  3/17 : 팀원 소개 및 아이디어 회의
-* [x]  3/22 : 주제 결정 및 Git 초대, 서브그룹 분배
-* [x]  3/29 : Problem statement 피드백, 개발 툴 결정
-* [x]  4/05 : 역할분배 구체화
-* [x]  4/07 : 그룹별 User story 및 Use case 피드백
-* [ ]  4/12 : 그룹별 Domain model 피드백 (예정)
+* [x]  3/17 : [회의] 팀원 소개 및 아이디어
+* [x]  3/22 : [회의] 주제 결정 및 Git 초대, 서브그룹 분배
+* [x]  3/27 : [일정] Problem statement 작성
+* [x]  3/29 : [회의] Problem statement 피드백, 개발 툴 결정
+* [x]  4/05 : [회의] 역할분배 구체화
+* [x]  4/07 : [회의] 그룹별 User story 및 Use case 피드백
+* [x]  4/12 : [회의] 그룹별 Domain model 피드백, [일정] Use case Numbering
+* [ ]  4/15 : [일정] Domain model merge
+* [ ]  4/16 : [일정] 1st checkpoint completed
+* [ ]  4/26 : [회의] Next meeting
+
