@@ -32,7 +32,7 @@
 * [x]  4/05 : [회의] 역할분배 구체화
 * [x]  4/07 : [회의] 그룹별 User story 및 Use case 피드백
 * [x]  4/12 : [회의] 그룹별 Domain model 피드백, [일정] Use case Numbering
-* [ ]  4/15 : [일정] Domain model merge
-* [ ]  4/16 : [일정] 1st checkpoint completed
+* [x]  4/15 : [일정] Domain model merge
+* [x]  4/16 : [일정] 1st checkpoint completed
 * [ ]  4/26 : [회의] Next meeting
 
