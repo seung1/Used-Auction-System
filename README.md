@@ -17,10 +17,10 @@
 - 전예원
 - 최승원
 
-### 3. Subproject
+### 3. Subgroup
 
 - 로그인 및 회원정보관리 : 범동권 이해인
-- 경매 및 1:1채팅 : 고재원 최승원
+- 경매시스템 및 1:1 채팅 : 고재원 최승원
 - 물건분류 및 추천시스템 : 장동재 전예원
 
 ### 4. Meeting logs (using Google Meet) & Project schedule
@@ -34,5 +34,8 @@
 - [x] 4/12 : [회의] 그룹별 Domain model 피드백, [일정] Use case Numbering
 - [x] 4/15 : [일정] Domain model merge
 - [x] 4/16 : [일정] 1st checkpoint completed
-- [x] 4/26 : [회의] Next meeting
-- [x] 5/03 : [회의] SDD관련 SubGroup간 설계 배분 및 어떤 형식으로 만들지 회의, 커트라인 설정
+- [x] 5/03 : [회의] SDD 관련 SubGroup간 설계 배분 및 어떤 형식으로 만들지 회의, 커트라인 설정
+- [x] 5/10 : [회의] SDD 피드백
+- [x] 5/13 : [일정] 피드백 바탕으로 최종 수정하여 올리기
+- [ ] 5/14 : [일정] SDD merge and 2rd checkpoint completed
+- [ ] 5/17 : [회의] Next Meeting
