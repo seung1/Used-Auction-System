@@ -4,6 +4,7 @@ import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 import api from './api';
+// import send from 'koa-send';
 
 const { PORT, MONGO_URI } = process.env;
 
@@ -11,7 +12,11 @@ const app = new Koa();
 const router = new Router();
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -20,10 +25,22 @@ mongoose
   });
 
 // main router setup
-router.use('/api', api.routes()); // main js¿¡ api ¶ó¿ìÆ® Àû¿ë
+router.use('/api', api.routes()); // main jsì— api ë¼ìš°íŠ¸ ì ìš©
 
 app.use(bodyParser());
+
 app.use(router.routes()).use(router.allowedMethods);
+
+router.get('/', (ctx) => {
+  ctx.body = 'Used_Auction API SERVER WORKING!!!!!!';
+});
+
+// app.use((ctx) => {
+//   // NOT FOUND && path to the file is not begin with /api
+//   if (ctx.status === 404 && ctx.path.indexOf('/api') !== 0) {
+//     if ('/' == ctx.path) send(ctx, '/src/index.html');
+//   }
+// });
 
 const port = PORT || 4000;
 app.listen(port, () => {
