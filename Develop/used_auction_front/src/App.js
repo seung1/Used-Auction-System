@@ -1,8 +1,8 @@
 import "./App.css";
-// import { Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-// import LoginPage from "./pages/LoginPage";
-/* <Route component={LoginPage} path="/login" /> */
+import LoginPage from "./pages/LoginPage";
+
 const App = () => {
   return (
     <>
@@ -14,6 +14,7 @@ const App = () => {
           <p>USER-Auction-System</p>
         </header>
       </div>
+      <Route component={LoginPage} path="/login" />
     </>
   );
 };
