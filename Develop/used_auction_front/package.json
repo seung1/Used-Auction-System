@@ -11,6 +11,8 @@
     "react-helmet-async": "^1.0.9",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
+    "redux-actions": "^2.6.5",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
