@@ -1,15 +1,14 @@
 import Koa from 'koa';
 require('dotenv').config();
 import Router from 'koa-router';
-// import bodyParser from 'koa-bodyparser';
+import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
-// import serve from 'koa-static';
-// import path from 'path';
-// import send from 'koa-send';
 import api from './api';
 
 const { PORT, MONGO_URI } = process.env;
+
 const app = new Koa();
+const router = new Router();
 
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false })
@@ -20,9 +19,11 @@ mongoose
     console.error(e);
   });
 
-app.use((ctx) => {
-  ctx.body = 'auction';
-});
+// main router setup
+router.use('/api', api.routes()); // main js에 api 라우트 적용
+
+app.use(bodyParser());
+app.use(router.routes()).use(router.allowedMethods);
 
 const port = PORT || 4000;
 app.listen(port, () => {
