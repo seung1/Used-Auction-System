@@ -2,6 +2,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import LoginPage from "./pages/LoginPage";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
           <p>USER-Auction-System</p>
         </header>
       </div>
+
+      <Route component={LandingPage} path={["/@:username", "/"]} exact />
       <Route component={LoginPage} path="/login" />
     </>
   );
