@@ -9,6 +9,22 @@ const UserSchema = new Schema({
   joinType: String,
 });
 
+UserSchema.methods.setPassword = async function (password) {
+  const hash = await bcrypt.hash(password, 10);
+  this.hashedPassword = hash;
+};
+
+UserSchema.methods.setJoinType = function () {
+  this.joinType = 'user';
+};
+
+UserSchema.methods.serialize = function () {
+  const data = this.toJSON();
+  delete data.hashedPassword;
+  // delete data.joinType;
+  return data;
+};
+
 //static method
 UserSchema.statics.findByUsername = function (username) {
   return this.findOne({ username });
