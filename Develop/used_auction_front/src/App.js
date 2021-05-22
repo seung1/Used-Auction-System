@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import LoginPage from "./pages/LoginPage";
 import LandingPage from "./pages/LandingPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
 
       <Route component={LandingPage} path={["/@:username", "/"]} exact />
       <Route component={LoginPage} path="/login" />
+      <Route component={RegisterPage} path="/register" />
     </>
   );
 };
