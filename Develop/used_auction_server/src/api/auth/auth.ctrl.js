@@ -64,7 +64,6 @@ export const register = async (ctx) => {
 */
 export const login = async (ctx) => {
   const { username, password } = ctx.request.body;
-
   // username, password 가 없으면 ERROR!!!!!
   if (!username || !password) {
     ctx.status = 401; // Unauthorized
@@ -82,7 +81,34 @@ export const login = async (ctx) => {
       ctx.status = 401;
       return;
     }
+    ctx.body = user.serialize();
+    const token = user.generateToken();
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7일
+      httpOnly: true,
+    });
   } catch (e) {
     ctx.throw(500, e);
   }
+};
+
+/*
+  GET /api/auth/check
+*/
+export const check = async (ctx) => {
+  const { user } = ctx.state;
+  if (!user) {
+    // 로그인중 아님
+    ctx.status = 401; // Unauthorized
+    return;
+  }
+  ctx.body = user;
+};
+
+/*
+  POST /api/auth/logout
+*/
+export const logout = async (ctx) => {
+  ctx.cookies.set('access_token');
+  ctx.status = 204; // No Content
 };

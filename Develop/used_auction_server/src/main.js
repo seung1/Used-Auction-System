@@ -4,6 +4,7 @@ import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 import api from './api';
+import jwtMiddleware from './util/jwtMiddleWare';
 // import send from 'koa-send';
 
 const { PORT, MONGO_URI } = process.env;
@@ -28,6 +29,7 @@ mongoose
 router.use('/api', api.routes()); // main js에 api 라우트 적용
 
 app.use(bodyParser());
+app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods);
 

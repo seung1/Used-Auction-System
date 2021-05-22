@@ -9,7 +9,7 @@ auth.get('/', (ctx) => {
 
 auth.post('/register', authCtrl.register);
 auth.post('/login', authCtrl.login);
-// auth.get('/check', authCtrl.check);
-// auth.post('/logout', authCtrl.logout);
+auth.get('/check', authCtrl.check);
+auth.post('/logout', authCtrl.logout);
 
 export default auth;
