@@ -17,6 +17,7 @@ export const register = async (ctx) => {
     password: Joi.string().required(),
     email: Joi.string().alphanum().min(3).max(20),
     joinType: Joi.string(),
+    admin: Joi.string(),
   });
   const result = schema.validate(ctx.request.body);
   if (result.error) {
@@ -25,7 +26,8 @@ export const register = async (ctx) => {
     return;
   }
 
-  const { username, password, email } = ctx.request.body;
+  const { username, password, email, admin } = ctx.request.body;
+  console.log('11', ctx.request);
   try {
     // username  이 이미 존재하는지 확인
     const exists = await User.findByUsername(username);
@@ -39,6 +41,9 @@ export const register = async (ctx) => {
       email,
       joinType: 'user',
     });
+    if (admin === 'admin') {
+      user.setJoinTypeAdmin();
+    }
     // user.setJoinType();
     await user.setPassword(password); // 비밀번호 설정
     await user.save(); // 데이터베이스에 저장

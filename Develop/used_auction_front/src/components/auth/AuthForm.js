@@ -58,6 +58,11 @@ const textMap = {
   register: "회원가입",
 };
 
+const Height = styled.div`
+  height: 2rem;
+  display: block;
+`;
+
 /**
  * 에러를 보여줍니다
  */
@@ -70,6 +75,7 @@ const ErrorMessage = styled.div`
 
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = textMap[type];
+
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
@@ -108,15 +114,16 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             value={form.email}
           />
         )}
+        {type === "register" && <Height></Height>}
         {type === "register" && (
           <label>
-            <input
-              type="checkbox"
+            관리자로 생성하기
+            <StyledInput
               autoComplete="admin"
               name="admin"
-              placeholder="관리자로 생성하기"
+              placeholder="admin 입력"
               onChange={onChange}
-              value={form.email}
+              value={form.admin}
             />
           </label>
         )}

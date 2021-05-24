@@ -29,9 +29,13 @@ const RegisterForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password, passwordConfirm, email } = form;
+    const { username, password, passwordConfirm, email, admin } = form;
     if ([username, password, passwordConfirm, email].includes("")) {
       setError("빈칸이 존재합니다. 입력해주세요.");
+      return;
+    }
+    if (email.length < 3) {
+      setError("이메일은 3자 이상으로 입력해주세요.");
       return;
     }
     if (password !== passwordConfirm) {
@@ -42,7 +46,7 @@ const RegisterForm = ({ history }) => {
       );
       return;
     }
-    dispatch(register({ username, password, email }));
+    dispatch(register({ username, password, email, admin }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함

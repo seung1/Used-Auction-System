@@ -14,8 +14,8 @@ UserSchema.methods.setPassword = async function (password) {
   this.hashedPassword = hash;
 };
 
-UserSchema.methods.setJoinType = function () {
-  this.joinType = 'user';
+UserSchema.methods.setJoinTypeAdmin = function () {
+  this.joinType = 'admin';
 };
 
 UserSchema.methods.serialize = function () {
