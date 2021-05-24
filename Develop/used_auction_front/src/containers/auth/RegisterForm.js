@@ -34,6 +34,10 @@ const RegisterForm = ({ history }) => {
       setError("빈칸이 존재합니다. 입력해주세요.");
       return;
     }
+    if (username.length < 3) {
+      setError("아이디는 3자 이상으로 입력해주세요.");
+      return;
+    }
     if (email.length < 3) {
       setError("이메일은 3자 이상으로 입력해주세요.");
       return;
