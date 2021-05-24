@@ -12,6 +12,7 @@ const buttonStyle = css`
   outline: none;
   padding: 0.25rem 1rem;
   cursor: pointer;
+  text-decoration: none;
   background: #3e81f6 !important;
   &:hover {
     background: black !important;

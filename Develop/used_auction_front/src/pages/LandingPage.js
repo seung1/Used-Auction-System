@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../components/common/Header";
+import HeaderForm from "../containers/common/HeaderForm";
 
 const LandingPage = () => {
   return (
     <>
-      <Header />
+      <HeaderForm />
       <div>used-Auction 메인 페이지입니다.</div>
     </>
   );
