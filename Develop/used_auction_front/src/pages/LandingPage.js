@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../components/common/Button";
+import Header from "../components/common/Header";
 
 const LandingPage = () => {
   return (
     <>
-      <div className="App">AUCTION MAIN PAGE</div>
-      <Button>Button</Button>
+      <Header />
+      <div>used-Auction 메인 페이지입니다.</div>
     </>
   );
 };
