@@ -3,9 +3,9 @@ import * as authCtrl from './auth.ctrl';
 
 const auth = new Router();
 
-auth.get('/', (ctx) => {
-  ctx.body = 'Auth Api working';
-});
+// auth.get('/', (ctx) => {
+//   ctx.body = 'Auth Api working';
+// });
 
 auth.post('/register', authCtrl.register);
 auth.post('/login', authCtrl.login);

@@ -4,7 +4,7 @@ import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 import api from './api';
-import cors from '@koa/cors';
+// import cors from '@koa/cors';
 import jwtMiddleware from './util/jwtMiddleWare';
 // import send from 'koa-send';
 
@@ -29,15 +29,16 @@ mongoose
 // main router setup
 router.use('/api', api.routes()); // main js에 api 라우트 적용
 
-app.use(cors());
+// app.use(cors({ origin: 'http://localhost:3000' }));
+
 app.use(bodyParser());
 app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods);
 
-router.get('/', (ctx) => {
-  ctx.body = 'Used_Auction API SERVER WORKING!!!!!!';
-});
+// router.get('/', (ctx) => {
+//   ctx.body = 'Used_Auction API SERVER WORKING!!!!!!';
+// });
 
 // app.use((ctx) => {
 //   // NOT FOUND && path to the file is not begin with /api

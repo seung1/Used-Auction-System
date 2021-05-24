@@ -23,6 +23,7 @@ const ResponsiveBlock = styled(Responsive)`
   }
   .right {
     display: flex;
+    font-size: 1.55rem;
     align-items: center;
   }
 `;

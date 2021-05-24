@@ -41,7 +41,7 @@ UserSchema.methods.generateToken = function () {
   const token = jwt.sign(
     // the Object which located in token value
     {
-      _Objectid: this.id,
+      _obid: this.id,
       username: this.username,
     },
     process.env.JWT_SECRET, // JWT password

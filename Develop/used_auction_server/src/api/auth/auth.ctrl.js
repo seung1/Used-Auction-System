@@ -15,7 +15,7 @@ export const register = async (ctx) => {
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(3).max(20).required(),
     password: Joi.string().required(),
-    email: Joi.string().alphanum().min(3).max(20).required(),
+    email: Joi.string().alphanum().min(3).max(20),
     joinType: Joi.string(),
   });
   const result = schema.validate(ctx.request.body);
@@ -82,11 +82,14 @@ export const login = async (ctx) => {
       return;
     }
     ctx.body = user.serialize();
+    console.log(ctx.body);
     const token = user.generateToken();
+    console.log('token');
     ctx.cookies.set('access_token', token, {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7¿œ
       httpOnly: true,
     });
+    // console.log(token);
   } catch (e) {
     ctx.throw(500, e);
   }
