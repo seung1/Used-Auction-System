@@ -99,6 +99,28 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             value={form.passwordConfirm}
           />
         )}
+        {type === "register" && (
+          <StyledInput
+            autoComplete="userEmail"
+            name="email"
+            placeholder="이메일"
+            onChange={onChange}
+            value={form.email}
+          />
+        )}
+        {type === "register" && (
+          <label>
+            <input
+              type="checkbox"
+              autoComplete="admin"
+              name="admin"
+              placeholder="관리자로 생성하기"
+              onChange={onChange}
+              value={form.email}
+            />
+          </label>
+        )}
+
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop cyan fullWidth style={{ marginTop: "3rem" }}>
           {text}
