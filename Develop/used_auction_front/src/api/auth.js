@@ -8,3 +8,6 @@ export const register = ({ username, password }) =>
   http.post("/api/auth/register", { username, password });
 
 export const check = () => clientInformation.get("/api/auth/check");
+
+// ·Î±×¾Æ¿ô
+export const logout = () => http.post("/api/auth/logout");
