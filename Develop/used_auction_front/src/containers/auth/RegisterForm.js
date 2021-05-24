@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { changeField, initializeForm, login } from "../../modules/auth";
+import { changeField, initializeForm, register } from "../../modules/auth";
 import AuthForm from "../../components/auth/AuthForm";
 import { check } from "../../modules/user";
 
@@ -29,8 +29,20 @@ const RegisterForm = ({ history }) => {
   // 폼 등록 이벤트 핸들러
   const onSubmit = (e) => {
     e.preventDefault();
-    const { username, password } = form;
-    dispatch(login({ username, password }));
+    const { username, password, passwordConfirm } = form;
+    if ([username, password, passwordConfirm].includes("")) {
+      setError("빈칸이 존재합니다. 입력해주세요.");
+      return;
+    }
+    if (password !== passwordConfirm) {
+      setError("비밀번호가 일치하지 않습니다.");
+      dispatch(changeField({ form: "register", key: "password", value: "" }));
+      dispatch(
+        changeField({ form: "register", key: "passwordConfirm", value: "" })
+      );
+      return;
+    }
+    dispatch(register({ username, password }));
   };
 
   // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
