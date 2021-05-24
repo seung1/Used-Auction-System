@@ -7,15 +7,14 @@ const jwtMiddleware = async (ctx, next) => {
   // console.log(token);
   if (!token) return next();
   try {
-    console.log(process.env.JWT_SECRET);
+    // console.log(process.env.JWT_SECRET);
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded);
+    // console.log(decoded);
     ctx.state.user = {
       _id: decoded._obid,
       username: decoded.username,
+      jointype: decoded._jt,
     };
-
-    console.log(ctx.state);
 
     const now = Math.floor(Date.now() / 1000);
     if (decoded.exp - now < 60 * 60 * 24 * 3.5) {

@@ -43,6 +43,7 @@ UserSchema.methods.generateToken = function () {
     {
       _obid: this.id,
       username: this.username,
+      _jt: this.joinType,
     },
     process.env.JWT_SECRET, // JWT password
     {
