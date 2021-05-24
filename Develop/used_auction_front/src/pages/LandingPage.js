@@ -2,6 +2,7 @@ import React from "react";
 import HeaderForm from "../containers/common/HeaderForm";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Button from "../components/common/Button";
 
 const LandingPage = () => {
   const Wrapper = styled.div`
@@ -21,10 +22,24 @@ const LandingPage = () => {
       ) : (
         <Wrapper>로그인 해주세요!!</Wrapper>
       )}
-      {user.jointype === "user" ? (
-        <Wrapper>사용자의 회원유형은 일반 사용자입니다.</Wrapper>
+      {user ? (
+        <Wrapper>
+          사용자의 회원유형은{" "}
+          {user.jointype === "user" ? "일반 사용자입니다." : "관리자입니다."}
+        </Wrapper>
       ) : (
-        <Wrapper>사용자의 회원유형은 관리자입니다.</Wrapper>
+        ""
+      )}
+      {user ? (
+        <Wrapper>
+          {user.jointype === "admin" ? (
+            <Button to="/admin">사용자 계정 관리버튼</Button>
+          ) : (
+            ""
+          )}
+        </Wrapper>
+      ) : (
+        ""
       )}
     </>
   );

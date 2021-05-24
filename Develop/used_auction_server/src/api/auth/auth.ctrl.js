@@ -17,7 +17,8 @@ export const register = async (ctx) => {
     password: Joi.string().required(),
     email: Joi.string().alphanum().min(3).max(20),
     joinType: Joi.string(),
-    admin: Joi.string(),
+    admin: Joi.string().empty('').default('default value'),
+    // admin: Joi.string().optional().allow(''),
   });
   const result = schema.validate(ctx.request.body);
   if (result.error) {
@@ -27,7 +28,6 @@ export const register = async (ctx) => {
   }
 
   const { username, password, email, admin } = ctx.request.body;
-  console.log('11', ctx.request);
   try {
     // username  이 이미 존재하는지 확인
     const exists = await User.findByUsername(username);
