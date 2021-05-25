@@ -1,5 +1,6 @@
 {
   "name": "used_auction_server",
+  "type": "module",
   "version": "1.0.0",
   "description": "used_auction",
   "main": "index.js",
@@ -23,6 +24,7 @@
     "koa-send": "^5.0.1",
     "koa-static": "^5.0.0",
     "mongoose": "^5.12.9",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "react-scripts": "^4.0.3"
   }
 }
