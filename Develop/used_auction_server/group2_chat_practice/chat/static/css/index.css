@@ -1,0 +1,99 @@
+/* 메인 */
+#main {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    background-color: #adc1d3;
+    text-align: center;
+    height: 80vh;
+  }
+
+  /*채팅 위에 영역*/
+  #subtitle{
+    padding: 2%;
+    font-weight: bold;
+    width: 90%;
+    height: 60;
+    margin:auto;
+    background-color: #ececed;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+
+  /*대기자 표시 배경*/
+  #other2 {
+    font-weight: bold;
+    width: 90%;
+    margin: auto;
+    margin-left: 2%;
+    padding: 1%;
+    display: inline;
+    color:white;
+    background-color: #6b6b6b;
+    border-radius: 20px;
+  }
+
+
+  /* 채팅 영역 */
+  #chat {
+    height: 92%;
+    width: 200;
+    overflow-y: auto;
+  }
+  
+  /* 접속 알림 */
+  .connect {
+    width: 90%;
+    margin: auto;
+    color: white;
+    background-color: #6b6b6b;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+  
+  /* 접속 종료 알림 */
+  .disconnect {
+    width: 90%;
+    margin: auto;
+    color: lightpink;
+    background-color: #6b6b6b;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+  
+  /* 내가 보낸 메시지 */
+  .me {
+    width: 30%;
+    padding: 1%;
+    margin-left: 65%;
+    background-color: #fae634;
+    border-radius: 10px;
+    margin-top: 15px;
+    word-break: break-all;
+    text-align: right;
+    /*float:right;*/
+  }
+  
+  /* 상대방이 보낸 메시지 */
+  .other {
+    width: 30%;
+    padding: 1%;
+    margin-left: 3%;
+    background-color: #fafbfa;
+    border-radius: 10px;
+    margin-top: 15px;
+    word-break: break-all;
+    text-align: left;
+    /*float:left;*/
+  }
+  
+  .timeprint{
+    font-size:small;
+    float:right;
+    margin-right: 1%;
+    margin-bottom: 5;
+  }
