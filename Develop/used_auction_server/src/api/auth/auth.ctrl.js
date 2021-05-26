@@ -11,7 +11,7 @@ import User from '../../models/user';
   }
 */
 export const register = async (ctx) => {
-  // Request Body °ËÁõÇÏ±â
+  // Request Body ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(3).max(20).required(),
     password: Joi.string().required(),
@@ -29,7 +29,7 @@ export const register = async (ctx) => {
 
   const { username, password, email, admin } = ctx.request.body;
   try {
-    // username  ÀÌ ÀÌ¹Ì Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+    // username  ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
     const exists = await User.findByUsername(username);
     if (exists) {
       ctx.status = 409; // Conflict
@@ -45,14 +45,14 @@ export const register = async (ctx) => {
       user.setJoinTypeAdmin();
     }
     // user.setJoinType();
-    await user.setPassword(password); // ºñ¹Ð¹øÈ£ ¼³Á¤
-    await user.save(); // µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀúÀå
+    await user.setPassword(password); // ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+    await user.save(); // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     ctx.body = user.serialize();
 
     const token = user.generateToken();
     ctx.cookies.set('access_token', token, {
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7ÀÏ
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7ï¿½ï¿½
       httpOnly: true,
     });
   } catch (e) {
@@ -69,7 +69,7 @@ export const register = async (ctx) => {
 */
 export const login = async (ctx) => {
   const { username, password } = ctx.request.body;
-  // username, password °¡ ¾øÀ¸¸é ERROR!!!!!
+  // username, password ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ERROR!!!!!
   if (!username || !password) {
     ctx.status = 401; // Unauthorized
     return;
@@ -91,7 +91,7 @@ export const login = async (ctx) => {
     const token = user.generateToken();
     // console.log('token');
     ctx.cookies.set('access_token', token, {
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7ÀÏ
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7ï¿½ï¿½
       httpOnly: true,
     });
     // console.log(token);
@@ -106,7 +106,7 @@ export const login = async (ctx) => {
 export const check = async (ctx) => {
   const { user } = ctx.state;
   if (!user) {
-    // ·Î±×ÀÎÁß ¾Æ´Ô
+    // ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½
     ctx.status = 401; // Unauthorized
     return;
   }
@@ -120,3 +120,22 @@ export const logout = async (ctx) => {
   ctx.cookies.set('access_token');
   ctx.status = 204; // No Content
 };
+
+export const users = async(ctx) => {
+  try{
+    const users = await User.find().sort({ _id: -1 }).limit(10)
+    lean().exec();
+  } catch(e) {
+    ctx.throw(500, e);
+  }
+}
+
+
+export const remove = async (ctx) => {
+  try {
+    const { id } = ctx.params;
+    await User.findByIdAndRemove(id).exec();
+  } catch(e) {
+    ctx.status = 204;
+  }
+}
