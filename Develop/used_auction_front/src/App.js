@@ -12,7 +12,7 @@ const App = () => {
       </Helmet>
       <div className="App">
         <header className="App-header">
-          <p>USER-Auction-System</p>
+          <p>Auction Mypage</p>
         </header>
       </div>
 
