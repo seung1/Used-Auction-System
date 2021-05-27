@@ -1,8 +1,10 @@
 import React from "react";
+import { Route, Link } from "react-router-dom";
 import HeaderForm from "../containers/common/HeaderForm";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "../components/common/Button";
+import SearchPage from '../pages/SearchPage';
 
 const LandingPage = () => {
   const Wrapper = styled.div`
@@ -23,10 +25,15 @@ const LandingPage = () => {
         <Wrapper>로그인 해주세요!!</Wrapper>
       )}
       {user ? (
-        <Wrapper>
-          사용자의 회원유형은{" "}
-          {user.jointype === "user" ? "일반 사용자입니다." : "관리자입니다."}
-        </Wrapper>
+        <div>
+            <Wrapper>
+                사용자의 회원유형은{" "}
+                    {user.jointype === "user" ? "일반 사용자입니다." : "관리자입니다."}
+            </Wrapper>
+            <Wrapper>
+              <Button><Link to ='/search'>검색으로 이동</Link></Button>
+            </Wrapper>
+      </div>
       ) : (
         ""
       )}
