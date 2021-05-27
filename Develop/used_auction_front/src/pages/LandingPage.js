@@ -11,7 +11,17 @@ const LandingPage = () => {
       <div>현재 날짜 :    </div>
       <div>종료 날짜 :    </div>
       <div></div>
-      
+      <input
+        type= "text"
+        name="message"
+        placeholder = "금액 입력"
+        onChange={
+            (e) => {
+            console.log(e);
+            }
+          }
+          />
+
      
        <div className = "App">
       <button onClick>입찰하기</button>
