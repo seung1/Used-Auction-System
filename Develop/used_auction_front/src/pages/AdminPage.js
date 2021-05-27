@@ -1,24 +1,21 @@
 import React from "react";
+import AuthTemplate from "../components/auth/AuthTemplate";
+import AdminForm from "../containers/auth/AdminForm";
 import HeaderForm from "../containers/common/HeaderForm";
 import styled from "styled-components";
 import Button from "../components/common/Button";
-import removeUser from "../api/auth";
+import Users from "../api/auth";
+
 
 const AdminPage = () => {
-  const Wrapper = styled.div`
-    font-size: 2rem;
-    padding-top: 4rem;
-    justify-content: center;
-    // align-items: center;
-    display: flex;
-  `;
-  return(
-    <>
-    <HeaderForm />
-      <Wrapper>사용자 목록</Wrapper>
-      <Wrapper><Button to='/admin'>삭제</Button></Wrapper>
-    </>
-  )
+  return (
+    <div className="AdminPage">
+      <AuthTemplate>
+        <AdminForm />
+      </AuthTemplate>
+    </div>
+  );
+};
   /*
   const Remove = async () => {
      try {
@@ -35,7 +32,7 @@ const AdminPage = () => {
     </>
   );
   */
-};
+
 
 export default AdminPage;
 

@@ -7,6 +7,7 @@ const auth = new Router();
 //   ctx.body = 'Auth Api working';
 // });
 
+// 
 auth.post('/register', authCtrl.register);
 auth.post('/login', authCtrl.login);
 auth.get('/check', authCtrl.check);

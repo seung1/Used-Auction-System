@@ -1,0 +1,33 @@
+{
+    "users":[
+        {
+            "id": 1,
+            "username": "가나다",
+            "hashedPassword": 1234,
+            "email": "abcd",
+            "joinType": "user"
+        },
+        {
+            "id": 2,
+            "username": "라마바",
+            "hashedPassword": 4321,
+            "email": "efgh",
+            "joinType": "user"
+        },
+        {
+            "id": 3,
+            "username": "사아자",
+            "hashedPassword": 4214,
+            "email": "ijkl",
+            "joinType": "user"
+        },
+        {
+            "id": 4,
+            "username": "차카타",
+            "hashedPassword": 2351,
+            "email": "mnop",
+            "joinType": "user"
+        }
+    ]
+    
+}

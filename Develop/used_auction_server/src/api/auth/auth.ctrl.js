@@ -121,6 +121,8 @@ export const logout = async (ctx) => {
   ctx.status = 204; // No Content
 };
 
+
+
 export const users = async(ctx) => {
   try{
     const users = await User.find().sort({ _id: -1 }).limit(10)
@@ -129,7 +131,6 @@ export const users = async(ctx) => {
     ctx.throw(500, e);
   }
 }
-
 
 export const remove = async (ctx) => {
   try {
