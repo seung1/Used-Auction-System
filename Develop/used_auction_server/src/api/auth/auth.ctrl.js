@@ -124,7 +124,6 @@ export const logout = async (ctx) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 // id가 valid한 값인지 확인
 const { ObjectId } = mongoose.Types;
 
@@ -137,20 +136,7 @@ export const checkObjectId = (ctx, next) => {
   return next();
 };
 
-
-// 형이 알려준거 (사용자정보 리스트 역순으로 10개 보여주는거)
-/*
-export const users = async(ctx) => {
-  try{
-    const users = await User.find().sort({ _id: -1 }).limit(10).lean().exec();
-    ctx.body = users;
-  } catch(e) {
-    ctx.throw(500, e);
-  }
-}*/
-
-
-// 형이 알려준거에 페이지기능(스킵) 추가해본거
+// 페이지기능(스킵) 추가해본거
 // 이런식으로 하면 http://localhost:4000/api/auth/admin?page=2 형식으로 페이지를 지정하여 조회할 수 있다
 export const users = async ctx => {
   // query는 문자열이기 때문에 숫자로 변환해 주어야 합니다
@@ -161,10 +147,10 @@ export const users = async ctx => {
     ruturn;
   }
   try{
-    const users = await User.find().sort({ _id: -1 }).limit(10).skip((page - 1) * 10).lean().exec();
+    const users = await User.find({joinType: "user"}).sort({ _id: -1 }).limit(5).skip((page - 1) * 5).lean().exec();
     // 마지막 페이지 알려주기
     const userCount = await User.countDocuments().exec();
-    ctx.set('Last-Page', Math.ceil(userCount / 10));
+    ctx.set('Last-Page', Math.ceil(userCount / 5));
     //
     ctx.body = users;
   } catch(e) {
@@ -192,29 +178,8 @@ export const remove = async (ctx) => {
   }
 }
 
-
-////////////////////////////////////////////////////////////
-/*
-export const write = async (ctx) => {
-  const { username, hashedPassword, email, joinType } = ctx.request.body;
-  const schema = new User({
-    username,
-    hashedPassword,
-    email,
-    joinType,
-  });
-  try {
-    await auth.save();
-    ctx.body=auth;
-
-  }catch(e){
-    ctx.throw(500,e);
-  }
-};
-*/
-
 // 일단 필요없는 기능
-
+/*
 // GET    /api/auth/:id
 export const read = async ctx => {
   const { id } = ctx.params;
@@ -229,3 +194,4 @@ export const read = async ctx => {
     ctx.throw(500,e);
   }
 };
+*/

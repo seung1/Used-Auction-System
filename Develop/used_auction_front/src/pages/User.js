@@ -15,13 +15,21 @@ export default function User(user) {
 
   return (
     <tr>
+      
       <td>{user.username}</td>
+      
+
+      <tr></tr>
+
+      
       <td>{user.email}</td>
-      <td>
+      
+
+      <div>
         <Button onClick={remove} className="btn_remove">
           삭제
         </Button>
-      </td>
+      </div>
     </tr>
   );
 }

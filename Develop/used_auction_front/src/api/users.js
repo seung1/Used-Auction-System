@@ -23,9 +23,3 @@ export const users = (page) => http.get(`/api/auth/users?page=${page}`);
 
 // 사용자 정보를 삭제하는 기능
 export const removeUser = (id) => http.delete(`/api/auth/remove/${id}`);
-
-//http://localhost:4000/api/auth/"DB에있는id"
-// 필요없는 기능
-export const user = (id) => http.get(`/api/auth/${id}`);
-
-export const one = () => http.get(`/api/auth/users`);
