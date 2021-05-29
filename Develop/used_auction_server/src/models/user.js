@@ -53,5 +53,7 @@ UserSchema.methods.generateToken = function () {
   return token;
 };
 
+// mongoose.model(스키마 이름, 스키마 객체);
+// 스키마 이름을 User라고 설정하면, 실제 데이터베이스에 만드는 컬렉션 이름은 users이다
 const User = mongoose.model('User', UserSchema);
 export default User;

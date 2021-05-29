@@ -11,7 +11,3 @@ export const check = () => http.get("/api/auth/check");
 
 // �α׾ƿ�
 export const logout = () => http.post("/api/auth/logout");
-
-export const removeUser = (id) => http.delete(`/api/auth/${id}`);
-
-export const users = () => http.get("/api/auth/users");
