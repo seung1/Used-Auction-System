@@ -157,7 +157,21 @@ export const save_buyStuff = async (ctx) => {
 
 export const getSaveList = async (ctx) => {
   const {username} = ctx.request.body;
-  const userList = await User.findOne({'username' : username})
-  ctx.body = userList.saveList
-  return userList.saveList
+  const buyList = await User.findOne({'username' : username})
+  const buyLen = buyList.buyList.length;
+
+  if (buyLen === 0) 
+    return ;
+  else {
+    // 구매 목록 랜덤 선택
+    const randnum = Math.floor(Math.random() * buyLen)
+    // 같은 구매를 한 사람
+    const tempAnotherUser = await User.find({'buyList' : {$all: buyList.buyList[randnum]}})
+    const anotherUser = tempAnotherUser.filter(v => v.username !== username)
+    // 구매한 사람 랜덤 선택
+    const randnum2 = Math.floor(Math.random() * anotherUser.length)
+    console.log(anotherUser[randnum2])
+    // 저장목록 반환
+    return anotherUser.saveList
+  }
 }
