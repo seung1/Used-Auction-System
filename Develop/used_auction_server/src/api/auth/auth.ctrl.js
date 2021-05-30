@@ -12,11 +12,11 @@ import mongoose from 'mongoose';
   }
 */
 export const register = async (ctx) => {
-  // Request Body �����ϱ�
+  // Request Body 검증하기
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(3).max(20).required(),
     password: Joi.string().required(),
-    email: Joi.string().alphanum().min(3).max(20),
+    email: Joi.string().min(3).max(20),
     joinType: Joi.string(),
     admin: Joi.string().empty('').default('default value'),
     // admin: Joi.string().optional().allow(''),
@@ -30,7 +30,7 @@ export const register = async (ctx) => {
 
   const { username, password, email, admin } = ctx.request.body;
   try {
-    // username  �� �̹� �����ϴ��� Ȯ��
+    // username 존재 유무 확인
     const exists = await User.findByUsername(username);
     if (exists) {
       ctx.status = 409; // Conflict
@@ -53,7 +53,7 @@ export const register = async (ctx) => {
 
     const token = user.generateToken();
     ctx.cookies.set('access_token', token, {
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7��
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7days
       httpOnly: true,
     });
   } catch (e) {
@@ -70,7 +70,7 @@ export const register = async (ctx) => {
 */
 export const login = async (ctx) => {
   const { username, password } = ctx.request.body;
-  // username, password �� ������ ERROR!!!!!
+  // username, password 존재 안할 시 ERROR!!!!!
   if (!username || !password) {
     ctx.status = 401; // Unauthorized
     return;
@@ -107,7 +107,7 @@ export const login = async (ctx) => {
 export const check = async (ctx) => {
   const { user } = ctx.state;
   if (!user) {
-    // �α����� �ƴ�
+    // 로그인중 아님
     ctx.status = 401; // Unauthorized
     return;
   }
@@ -129,8 +129,8 @@ const { ObjectId } = mongoose.Types;
 
 export const checkObjectId = (ctx, next) => {
   const { id } = ctx.params;
-  if(!ObjectId.isValid(id)){
-    ctx.status=400; // Bad Request
+  if (!ObjectId.isValid(id)) {
+    ctx.status = 400; // Bad Request
     return;
   }
   return next();
@@ -138,25 +138,30 @@ export const checkObjectId = (ctx, next) => {
 
 // 페이지기능(스킵) 추가해본거
 // 이런식으로 하면 http://localhost:4000/api/auth/admin?page=2 형식으로 페이지를 지정하여 조회할 수 있다
-export const users = async ctx => {
+export const users = async (ctx) => {
   // query는 문자열이기 때문에 숫자로 변환해 주어야 합니다
   // 값이 주어지지 않았다면 1을 기본으로 사용합니다
   const page = parseInt(ctx.query.page || '1', 10);
-  if (page < 1){
+  if (page < 1) {
     ctx.status = 400;
     ruturn;
   }
-  try{
-    const users = await User.find({joinType: "user"}).sort({ _id: -1 }).limit(5).skip((page - 1) * 5).lean().exec();
+  try {
+    const users = await User.find({ joinType: 'user' })
+      .sort({ _id: -1 })
+      .limit(5)
+      .skip((page - 1) * 5)
+      .lean()
+      .exec();
     // 마지막 페이지 알려주기
     const userCount = await User.countDocuments().exec();
     ctx.set('Last-Page', Math.ceil(userCount / 5));
     //
     ctx.body = users;
-  } catch(e) {
+  } catch (e) {
     ctx.throw(500, e);
   }
-}
+};
 
 // 역순으로 불러오는거 없앤거
 /*
@@ -173,10 +178,10 @@ export const remove = async (ctx) => {
   try {
     const { id } = ctx.params;
     await User.findByIdAndRemove(id).exec();
-  } catch(e) {
+  } catch (e) {
     ctx.status = 204;
   }
-}
+};
 
 // 일단 필요없는 기능
 /*
