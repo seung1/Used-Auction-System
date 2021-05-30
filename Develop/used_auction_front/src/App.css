@@ -77,11 +77,11 @@
     width: 100%;
   }
   table td {
-    width: 25%;
+    width: 10%;
     height: 70px;
     border: 1px solid #ccc;
     text-align: center;
-    font-size: 26px;
+    font-size: 23px;
   }
   
   table td:first-child {

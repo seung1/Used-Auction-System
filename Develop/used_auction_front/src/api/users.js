@@ -1,4 +1,3 @@
-import qs from 'qs';
 import http from "./http";
 
 // http://localhost:4000/api/auth/users

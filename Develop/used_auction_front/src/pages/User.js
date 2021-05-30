@@ -1,4 +1,3 @@
-//import { useState } from "react";
 import { removeUser } from "../api/users";
 import Button from "../components/common/Button";
 
@@ -17,11 +16,7 @@ export default function User(user) {
     <tr>
       <center>
       <td>{user.username}</td>
-
-      
       <td>{user.email}</td>
-      
-
       <td>
         <Button onClick={remove} className="btn_remove">
           삭제
