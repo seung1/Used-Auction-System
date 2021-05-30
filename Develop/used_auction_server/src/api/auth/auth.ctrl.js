@@ -158,8 +158,7 @@ export const save_buyStuff = async (ctx) => {
 export const getSaveList = async (ctx) => {
   const {username} = ctx.request.body;
   const buyList = await User.findOne({'username' : username})
-  const buyLen = buyList.buyList.length;
-
+  const buyLen = await buyList.buyList.length;
   if (buyLen === 0) 
     return ;
   else {
@@ -170,8 +169,9 @@ export const getSaveList = async (ctx) => {
     const anotherUser = tempAnotherUser.filter(v => v.username !== username)
     // 구매한 사람 랜덤 선택
     const randnum2 = Math.floor(Math.random() * anotherUser.length)
-    console.log(anotherUser[randnum2])
     // 저장목록 반환
-    return anotherUser.saveList
+    ctx.body = anotherUser[randnum2].saveList
+    // console.log(ctx.body)
+    return anotherUser
   }
 }
