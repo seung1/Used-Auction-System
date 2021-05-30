@@ -12,7 +12,7 @@ export default function UserList() {
     users(page).then((res) => {
       setData(res.data);
     });
-  }, [page]); //  page 이동시에만 api 호출
+  }, [page, data]); //  page 이동시에만 api 호출
 
   const prev = () => {
     if (page === 1) {
