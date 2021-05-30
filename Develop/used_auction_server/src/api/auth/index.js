@@ -14,5 +14,6 @@ auth.get('/check', authCtrl.check);
 auth.post('/logout', authCtrl.logout);
 auth.get('/admin', authCtrl.users);
 auth.delete('/remove', authCtrl.remove);
+auth.post('/sAb', authCtrl.save_buyStuff);
 
 export default auth;

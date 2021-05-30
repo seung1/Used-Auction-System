@@ -15,3 +15,5 @@ export const logout = () => http.post("/api/auth/logout");
 export const removeUser = (id) => http.delete(`/api/auth/${id}`);
 
 export const users = () => http.get("/api/auth/users");
+
+export const saveAndBuy = () => http.post('/api/auth/sAb')

@@ -140,3 +140,16 @@ export const remove = async (ctx) => {
     ctx.status = 204;
   }
 }
+
+export const save_buyStuff = async (ctx) => {
+  const {username, product_number, mode} = ctx.request.body;
+
+  if (mode === 'save') {
+    await User.updateOne({username : username}, { $push : {saveList : parseInt(product_number)}})
+    ctx.body = 'save_success'
+  }
+  else if (mode === 'buy') {
+    await User.updateOne({username : username}, { $push : {buyList : parseInt(product_number)}})
+    ctx.body = 'buy_success'
+  }
+}

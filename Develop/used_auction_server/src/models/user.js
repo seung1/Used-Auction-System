@@ -7,6 +7,8 @@ const UserSchema = new Schema({
   hashedPassword: String,
   email: String,
   joinType: String,
+  saveList: [Number],
+  buyList: [Number],
 });
 
 UserSchema.methods.setPassword = async function (password) {
