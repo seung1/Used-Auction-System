@@ -144,7 +144,7 @@ export const users = async (ctx) => {
   const page = parseInt(ctx.query.page || '1', 10);
   if (page < 1) {
     ctx.status = 400;
-    ruturn;
+    return;
   }
   try {
     const users = await User.find({ joinType: 'user' })

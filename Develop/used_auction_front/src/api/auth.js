@@ -9,5 +9,5 @@ export const register = ({ username, password, email, admin }) =>
 
 export const check = () => http.get("/api/auth/check");
 
-// �α׾ƿ�
+// Logout Api
 export const logout = () => http.post("/api/auth/logout");
