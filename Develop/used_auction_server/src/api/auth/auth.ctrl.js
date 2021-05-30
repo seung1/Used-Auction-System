@@ -1,3 +1,4 @@
+import e from 'cors';
 import Joi from 'joi';
 import User from '../../models/user';
 
@@ -152,4 +153,11 @@ export const save_buyStuff = async (ctx) => {
     await User.updateOne({username : username}, { $push : {buyList : parseInt(product_number)}})
     ctx.body = 'buy_success'
   }
+}
+
+export const getSaveList = async (ctx) => {
+  const {username} = ctx.request.body;
+  const userList = await User.findOne({'username' : username})
+  ctx.body = userList.saveList
+  return userList.saveList
 }
