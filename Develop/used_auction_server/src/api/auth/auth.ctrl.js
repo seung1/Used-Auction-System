@@ -1,6 +1,5 @@
 import Joi from 'joi';
 import User from '../../models/user';
-import mongoose from 'mongoose';
 
 /*
   POST /api/auth/register
