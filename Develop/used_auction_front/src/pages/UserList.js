@@ -41,15 +41,15 @@ export default function UserList() {
 
   return (
     <AuthTemplate>
-      <center>
+      <table>
         <h3>
-          
-            <td>아이디 이메일</td>
-          
+            <td>ID</td>
+            <td>이메일</td>
+            <td>탈퇴처리</td>
         </h3>
-      </center>
+      </table>
 
-      <center>
+      
       <table>
         <tbody>
           {data.map(user => (
@@ -57,7 +57,7 @@ export default function UserList() {
           ))}
         </tbody>
       </table>
-      </center>
+      
 
       <center>
         <td>
