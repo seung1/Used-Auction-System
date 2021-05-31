@@ -1,6 +1,7 @@
 # Used-Auction-System
 
 중고 경매 시스템 [ cau sw공학 프로젝트 ]  
+(참고링크 : https://nevonprojects.com/secure-online-auction-system/)
  <br/>
 
 ### 1. 프로젝트 소개
@@ -23,6 +24,8 @@
 - 경매시스템 및 1:1 채팅 : 고재원 최승원
 - 물건분류 및 추천시스템 : 장동재 전예원
 
+-> 그룹별 branche를 이용하여 개발
+
 ### 4. Meeting logs (using Google Meet) & Project schedule
 
 - [x] 3/17 : [회의] 팀원 소개 및 아이디어
@@ -42,3 +45,4 @@
 - [x] 5/26 : [회의] 개발 중간 점검
 - [x] 5/31 : [회의] Final review and 3rd checkpoint completed
 - [ ] 6/02 : [일정] 발표 최종준비
+- [ ] 6/07 : [일정] 발표
