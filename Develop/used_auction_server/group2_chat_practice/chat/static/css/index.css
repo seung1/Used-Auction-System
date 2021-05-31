@@ -2,24 +2,60 @@
 #main {
     width: 80%;
     margin: auto;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 20px;
     background-color: #adc1d3;
     text-align: center;
-    height: 80vh;
+    height: 70vh;
+  }
+
+  #App {
+    text-align: center;
+  }
+  
+  #App-header {
+    background-color: #5b9bdb;
+    min-height: 10vh;
+    display: flex;
+    align-items: left;
+    justify-content:center;
+    font-size: 40px;
+    color: white;
   }
 
   /*채팅 위에 영역*/
   #subtitle{
-    padding: 2%;
+    padding: 1%;
     font-weight: bold;
     width: 90%;
     height: 60;
     margin:auto;
     background-color: #ececed;
-    margin-top: 20px;
+    margin-top: 10px;
     border-radius: 8px;
+  }
+  #subtitle2{
+    padding: 0.8%;
+    font-weight: bold;
+    width:40%;
+    height: 60;
+    margin:auto;
+    background-color: #ececed;
+    margin-top: 5px;
+    border-radius: 8px;
+  }
+  #other3 {
+    font-weight: bold;
+    width: 90%;
+    margin: auto;
+    margin-left: 15%;
+    padding: 1%;
+    display: inline;
+    color:lightpink;
+    background-color: #6b6b6b;
+    border-radius: 20px;
+    font-size: small;
   }
 
   /*대기자 표시 배경*/
@@ -28,11 +64,12 @@
     width: 90%;
     margin: auto;
     margin-left: 2%;
-    padding: 1%;
+    padding: 0.6%;
     display: inline;
-    color:white;
+    color:lightgoldenrodyellow;
     background-color: #6b6b6b;
-    border-radius: 20px;
+    border-radius: 12px;
+    font-size: small;
   }
 
 
