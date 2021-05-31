@@ -35,7 +35,7 @@ const Button = styled.button`
 function EnrollPage ({history}) {
     const firstState = {
         product_name : '',
-        product_price : 0,
+        price : 0,
         local_area : '',
         category : '',
         user_name : JSON.parse(localStorage.getItem("user")).username,
@@ -46,7 +46,8 @@ function EnrollPage ({history}) {
         setFormData({...formData, product_name : e.target.value})
     }
     const onChangePrice = e => {
-        setFormData({...formData, product_price : e.target.value})
+        setFormData({...formData, price : e.target.value})
+        console.log(formData)
     }
     const onChangeArea = e => {
         setFormData({...formData, local_area : e.target.value})
@@ -86,12 +87,25 @@ function EnrollPage ({history}) {
                 <label>가격</label>
                     <input className = 'input-text' onChange = {onChangePrice} type = 'number'>
                     </input>
-                <label>판매 지역</label>
-                    <input className = 'input-text' onChange = {onChangeArea}>
-                    </input>
+                <label>지역</label>
+                <select 
+                        value={formData.local_area}
+                        onChange={onChangeArea}>
+                        <option value="">----지역별 카테고리로 찾기----</option>
+                        <option value="강남구">강남구</option>
+                        <option value="동작구">동작구</option>
+                        <option value="중구">중구</option>
+                </select>
                 <label>카테고리</label>
-                    <input className = 'input-text' onChange = {onChangeCategory}>
-                    </input>
+                <select
+                        value={formData.category}
+                        onChange={onChangeCategory}>
+                        <option value="">----상품별 카테고리로 찾기----</option>
+                        <option value="의류">의류</option>
+                        <option value="디지털/가전">디지털/가전</option>
+                        <option value="잡화">잡화</option>
+                        <option value="뷰티/미용">뷰티/미용</option>
+                </select>
             </Form>
             <Button onClick = {onClickEnrollment}>
                 등록
