@@ -54,6 +54,8 @@ class SearchPage extends Component {
         const res = await fetch(`/api/stuff/getStuff`);
         const body = await res.json();
         this.setState({Products : body});
+
+        
         // 저장 목록
         const username = JSON.parse(localStorage.getItem("user")).username
         const res2 = await auth.getMySaveList({username : username})
