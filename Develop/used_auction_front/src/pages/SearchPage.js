@@ -26,7 +26,6 @@ const ComponentBox = styled.div`
     border: 1px solid black;
     width : 100%
 `
-
 class SearchPage extends Component {
 
     
@@ -126,25 +125,23 @@ class SearchPage extends Component {
                         <SaveBox stuffList = {this.state.Products} saveList = {this.state.SaveList}/>
                     </ComponentBox>
                     <ComponentBox>
-                        <label>
-                            <select 
+                        <label  className="selectinfo">
+                            <select
                                 name="choice"
                                 value={this.state.choice}
-                                placeholder="상품별 카테고리로 찾기"
                                 onChange={this.handleCategory}>
+                                <option value="">----상품별 카테고리로 찾기----</option>
                                 <option value="의류">의류</option>
                                 <option value="디지털/가전">디지털/가전</option>
                                 <option value="잡화">잡화</option>
                                 <option value="뷰티/미용">뷰티/미용</option>
                             </select>
-                        </label>
-                        <p />
-                        <label>
+                            
                             <select 
                                 name="place"
                                 value={this.state.place}
-                                placeholder="지역별 카테고리로 찾기"
                                 onChange={this.handlePlace}>
+                                <option value="">----지역별 카테고리로 찾기----</option>
                                 <option value="강남구">강남구</option>
                                 <option value="동작구">동작구</option>
                                 <option value="중구">중구</option>
