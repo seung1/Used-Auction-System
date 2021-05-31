@@ -112,6 +112,9 @@ class SearchPage extends Component {
         return (
             <div className="App">
                 <h1>PRODUCT SEARCH PAGE</h1>
+                        <Link to = '/'>
+                            메인으로 돌아가기
+                        </Link>
                 <Wrapper>
                     <Button>
                         <Link to = '/enroll'>
