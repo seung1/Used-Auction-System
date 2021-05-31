@@ -14,7 +14,8 @@ auth.get('/check', authCtrl.check);
 auth.post('/logout', authCtrl.logout);
 auth.get('/admin', authCtrl.users);
 auth.delete('/remove', authCtrl.remove);
-auth.post('/sAb', authCtrl.save_buyStuff);
+auth.post('/saveAndBuy', authCtrl.save_buyStuff);
 auth.post('/getSaveList', authCtrl.getSaveList)
+auth.post('/getMySaveList', authCtrl.getMySaveList)
 
 export default auth;

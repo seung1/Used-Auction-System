@@ -10,17 +10,22 @@ const BigBox = styled.div`
 const TitleStyle = styled.h1`
 
 `
+
 const SmallBox = styled.div`
     align-item : center
 `
 
-const RecommendBox = ({stuffList, recommendList}) => {
+const onClick = styled.div`
+
+`
+
+const SaveBox = ({stuffList, saveList}) => {
     return (
         <BigBox>
             <div>
-                <TitleStyle> 추천목록 </TitleStyle>
+                <TitleStyle> 저장목록 </TitleStyle>
                 <SmallBox>
-                    {stuffList.filter(v => recommendList.includes(v.product_number))
+                    {stuffList.filter(v => saveList.includes(v.product_number))
                                 .map(v => <SmallBox>{v.product_name}</SmallBox>)}
                 </SmallBox>
             </div>
@@ -28,4 +33,4 @@ const RecommendBox = ({stuffList, recommendList}) => {
     )
 }
 
-export default RecommendBox;
+export default SaveBox;

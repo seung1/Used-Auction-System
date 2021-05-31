@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "../components/common/Button";
 import SearchPage from '../pages/SearchPage';
-import RecommendBox from '../components/common/RecommendBox';
 
 const LandingPage = () => {
   const Wrapper = styled.div`
@@ -33,9 +32,6 @@ const LandingPage = () => {
             </Wrapper>
             <Wrapper>
               <Button><Link to ='/search'>검색으로 이동</Link></Button>
-            </Wrapper>
-            <Wrapper>
-              <RecommendBox/>
             </Wrapper>
       </div>
       ) : (

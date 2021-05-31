@@ -143,11 +143,19 @@ export const remove = async (ctx) => {
 }
 
 export const save_buyStuff = async (ctx) => {
-  const {username, product_number, mode} = ctx.request.body;
+  const {username, product_number, mode, have} = ctx.request.body;
 
+  console.log(ctx)
   if (mode === 'save') {
-    await User.updateOne({username : username}, { $push : {saveList : parseInt(product_number)}})
-    ctx.body = 'save_success'
+    if (!have) {
+      await User.updateOne({username : username}, { $push : {saveList : parseInt(product_number)}})
+      ctx.body = 'save_push_success'
+      console.log('yaho_push')
+    } else {
+      await User.updateOne({username:username}, {$pull : {saveList : parseInt(product_number)}})
+      ctx.body = 'save_pop_success'
+      console.log('yaho_pop')
+    }
   }
   else if (mode === 'buy') {
     await User.updateOne({username : username}, { $push : {buyList : parseInt(product_number)}})
@@ -174,4 +182,14 @@ export const getSaveList = async (ctx) => {
     // console.log(ctx.body)
     return anotherUser
   }
+}
+
+export const getMySaveList = async (ctx) => {
+  const {username} = ctx.request.body;
+  const userObj = await User.findOne({'username' : username})
+  const saveList = await userObj.saveList;
+
+  console.log(userObj)
+  ctx.body = saveList;
+  console.log(ctx.body)
 }

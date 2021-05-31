@@ -16,8 +16,11 @@ export const removeUser = (id) => http.delete(`/api/auth/${id}`);
 
 export const users = () => http.get("/api/auth/users");
 
-export const saveAndBuy = ({ username, product_number, mode}) => 
-  http.post('/api/auth/sAb', {username, product_number, mode})
+export const saveAndBuy = ({ username, product_number, mode, have}) => 
+  http.post('/api/auth/saveAndBuy', {username, product_number, mode, have})
 
 export const getSaveList = ({ username }) => 
   http.post('/api/auth/getSaveList', {username})
+
+export const getMySaveList = ({username}) =>
+  http.post('/api/auth/getMySaveList', {username})
