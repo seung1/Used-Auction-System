@@ -38,13 +38,15 @@ class SearchPage extends Component {
             keyword:'',
             SaveList: [],
             RecommendList : [],
-            choice:''
+            choice:'',
+            place:''
         };
         this.callApi()
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleCategory = this.handleCategory.bind(this);
+        this.handlePlace = this.handlePlace.bind(this);
     }
     
 
@@ -80,15 +82,23 @@ class SearchPage extends Component {
         });
     };
 
+    handlePlace(e) {
+        this.setState({
+            place: e.target.value
+        });
+    };
+
     render() {
         const mapToComponents = (data) => {
             data.sort();
             data = data.filter(
                 (product) => {
                     return product.product_name.toLowerCase()
-                    .indexOf(this.state.keyword.toLowerCase()) > -1,
+                    .indexOf(this.state.keyword.toLowerCase()) > -1 &
                     product.category.toLowerCase()
-                    .indexOf(this.state.choice.toLowerCase()) > -1;
+                    .indexOf(this.state.choice.toLowerCase()) > -1 &
+                    product.local_area.toLowerCase()
+                    .indexOf(this.state.place.toLowerCase()) > -1;
                 }
             );
             return data.map((product) => {
@@ -118,14 +128,26 @@ class SearchPage extends Component {
                     <ComponentBox>
                         <label>
                             <select 
-                                name="value"
-                                value={this.state.value}
+                                name="choice"
+                                value={this.state.choice}
                                 placeholder="상품별 카테고리로 찾기"
                                 onChange={this.handleCategory}>
                                 <option value="의류">의류</option>
                                 <option value="디지털/가전">디지털/가전</option>
                                 <option value="잡화">잡화</option>
                                 <option value="뷰티/미용">뷰티/미용</option>
+                            </select>
+                        </label>
+                        <p />
+                        <label>
+                            <select 
+                                name="place"
+                                value={this.state.place}
+                                placeholder="지역별 카테고리로 찾기"
+                                onChange={this.handlePlace}>
+                                <option value="강남구">강남구</option>
+                                <option value="동작구">동작구</option>
+                                <option value="중구">중구</option>
                             </select>
                         </label>
                         <p />
