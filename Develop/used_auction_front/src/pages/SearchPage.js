@@ -128,8 +128,8 @@ class SearchPage extends Component {
                         <SaveBox stuffList = {this.state.Products} saveList = {this.state.SaveList}/>
                     </ComponentBox>
                     <ComponentBox>
-                        <label  className="selectinfo">
-                            <select
+                        <label className="selectinfo">
+                            <select className="selectinfo"
                                 name="choice"
                                 value={this.state.choice}
                                 onChange={this.handleCategory}>
@@ -140,7 +140,7 @@ class SearchPage extends Component {
                                 <option value="뷰티/미용">뷰티/미용</option>
                             </select>
                             
-                            <select 
+                            <select className="selectinfo"
                                 name="place"
                                 value={this.state.place}
                                 onChange={this.handlePlace}>
