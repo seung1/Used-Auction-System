@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { Route, Link } from "react-router-dom";
 import ProductDetail from "../components/common/ProductDetail";
 import ProductDetailList from "../components/common/ProductDetailList";
-import CategoryDetail from "../components/common/CategoryDetail";
 import styled from "styled-components";
 import Button from "../components/common/Button";
 import RecommendBox from '../components/common/RecommendBox';
@@ -39,11 +38,13 @@ class SearchPage extends Component {
             keyword:'',
             SaveList: [],
             RecommendList : [],
+            choice:''
         };
         this.callApi()
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleCategory = this.handleCategory.bind(this);
     }
     
 
@@ -73,13 +74,21 @@ class SearchPage extends Component {
         });
     };
 
+    handleCategory(e) {
+        this.setState({
+            choice: e.target.value
+        });
+    };
+
     render() {
         const mapToComponents = (data) => {
             data.sort();
             data = data.filter(
                 (product) => {
                     return product.product_name.toLowerCase()
-                    .indexOf(this.state.keyword.toLowerCase()) > -1;
+                    .indexOf(this.state.keyword.toLowerCase()) > -1,
+                    product.category.toLowerCase()
+                    .indexOf(this.state.choice.toLowerCase()) > -1;
                 }
             );
             return data.map((product) => {
@@ -107,7 +116,18 @@ class SearchPage extends Component {
                         <SaveBox stuffList = {this.state.Products} saveList = {this.state.SaveList}/>
                     </ComponentBox>
                     <ComponentBox>
-                        <CategoryDetail />
+                        <label>
+                            <select 
+                                name="value"
+                                value={this.state.value}
+                                placeholder="상품별 카테고리로 찾기"
+                                onChange={this.handleCategory}>
+                                <option value="의류">의류</option>
+                                <option value="디지털/가전">디지털/가전</option>
+                                <option value="잡화">잡화</option>
+                                <option value="뷰티/미용">뷰티/미용</option>
+                            </select>
+                        </label>
                         <p />
                         <input
                             type="text"
